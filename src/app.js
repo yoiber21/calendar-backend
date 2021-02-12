@@ -4,9 +4,10 @@ import {json} from 'body-parser';
 import morgan from 'morgan';
 import cors from 'cors';
 /* se importan las rutas */
-import authRoutes from './routes/auth-route';
-import dbConnection from './database/config';
-const app = express()
+import authRoutes from './routes/auth-routes';
+import eventRoutes from './routes/event-routes';
+import dbConnection from '../database/config';
+const app = express();
 
 
 
@@ -19,7 +20,8 @@ app.use(json())// para procesar datos en formato json
 app.use(cors());
 
 //Rutas
-app.use('/api/auth', authRoutes)
+app.use('/api/auth', authRoutes);
+app.use('/api/events', eventRoutes);
 
 
 // Lectura y parseo del body
